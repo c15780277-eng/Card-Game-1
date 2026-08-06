@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200">
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" fill="none"/>
+  <g fill="none" font-family="Segoe UI, Arial, sans-serif" font-weight="900" font-size="48" filter="url(#glow)">
+    <text x="50%" y="55" text-anchor="middle" fill="#bffbd3" opacity="0.95" letter-spacing="6">NARCO CARDS:</text>
+    <text x="50%" y="115" text-anchor="middle" fill="#8ff5c9" font-size="36" letter-spacing="4">THE GATHERING</text>
+  </g>
+</svg>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Narco Cards — Neon Menu</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="menu-shell">
+    <header class="menu-header">
+      <img src="assets/title.svg" alt="Narco Cards: The Gathering" class="title-svg">
+    </header>
+
+    <div class="menu-topbar">
+      <nav class="menu-inline">
+        <button class="menu-pill active" data-target="play">PLAY</button>
+        <button class="menu-pill" data-target="deck">DECKBUILDER</button>
+        <button class="menu-pill" data-target="collection">COLLECTION</button>
+        <button class="menu-pill" data-target="shop">SHOP</button>
+        <button class="menu-pill" data-target="options">OPTIONS</button>
+        <button class="menu-pill" data-target="quit">QUIT</button>
+      </nav>
+    </div>
+
+    <main class="menu-content">
+      <aside class="menu-left-vertical">
+        <ul>
+          <li><button class="left-item active">PLAY</button></li>
+          <li><button class="left-item">DECKBUILDER</button></li>
+          <li><button class="left-item">COLLECTION</button></li>
+          <li><button class="left-item">SHOP</button></li>
+          <li><button class="left-item">OPTIONS</button></li>
+          <li><button class="left-item">QUIT</button></li>
+        </ul>
+        <div class="daily-wrap">
+          <img src="assets/daily.svg" alt="Daily" class="daily-svg">
+          <div class="daily-text">DAILY LOGIN</div>
+        </div>
+      </aside>
+
+      <section class="menu-center-holo">
+        <div class="holo-card">
+          <img src="assets/holo.svg" alt="Hologramm" class="holo-img">
+          <h1>Willkommen</h1>
+          <p>Ein Kartenspiel‑Prototyp im Neon‑Stil. Wähle links deine Aktion.</p>
+          <div class="cta-row">
+            <button class="cta pill-btn">Spielen</button>
+            <button class="cta pill-btn">Deckbuilder</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // simple interaction to toggle active state
+    document.querySelectorAll('.left-item').forEach((btn,i)=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.left-item').forEach(x=>x.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+    document.querySelectorAll('.menu-pill').forEach(btn=>btn.addEventListener('click',()=>{ document.querySelectorAll('.menu-pill').forEach(x=>x.classList.remove('active')); btn.classList.add('active'); }));
+  </script>
+</body>
+</html>

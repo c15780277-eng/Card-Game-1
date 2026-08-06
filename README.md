@@ -1,80 +1,57 @@
-# 🎴 Narco Cards - Telegram Game
+# Narco Cards: The Gathering — Design-System Dokumentation
 
-Ein interaktives Kartenspiel, das in Telegram gespielt werden kann!
+## CSS-Variablen & Neon-Effects
 
-## 🎮 Spielen
+Diese Dateien enthalten die exakten CSS-Variablen und Effekte basierend auf deinen Referenzbildern:
 
-### Online spielen (GitHub Pages)
-Das Spiel ist hier verfügbar: 
-**[Narco Cards spielen](https://c15780277-eng.github.io/Card-Game-1/narco-cards-standalone.html)**
+### css/variables.css
+- Primäre Neon-Farben (Teal, Cyan, Bright)
+- Sekundäre Farben (Pink, Purple)
+- Hintergrund-Palette (dunkel bis mittel)
+- Text-Farben (Primary bis Inactive)
+- Button-States (default, hover, active)
+- Glow & Shadow Effekte
+- Transitions & Animationen
+- Spacing, Border Radius, Fonts
+- Letter Spacing (für Cyberpunk-Ästhetik)
 
-### In Telegram spielen
-*Telegram Bot Setup erforderlich (siehe unten)*
+### css/neon-effects.css
+- `neon-glow-pulse` & `neon-glow-pulse-strong` Animationen
+- `.glow-teal`, `.glow-teal-strong`, `.glow-pink` Klassen
+- `.neon-text` & `.neon-text-bright` für Überschriften
+- `.neon-border` & `.neon-border-strong` für Rahmen
+- `.grid-bg` Gitter-Muster
+- `.vignette` Kanten-Verdunkelung
+- Button States: `.pill-btn`, `.left-item`
+- `.holo-card` für Hologramm-Karte
+- `.life-bar` für Health-Anzeige
+- `.unit`, `.tc-card`, Tooltip, Toast Styles
+- Accessibility: Focus-States
 
----
+### Integration
+- Alle CSS-Dateien sind in index.html linked (in richtiger Reihenfolge geladen)
+- Variables werden als CSS Custom Properties definiert und können überall verwendet werden
+- Neon-Effects sind als wiederverwendbare Klassen/Animationen implementiert
 
-## 📋 Telegram Bot Setup-Anleitung
+### Anwendungsbeispiele
 
-Folge diesen Schritten, um das Spiel in Telegram verfügbar zu machen:
+```html
+<!-- Neon-Text mit Glow -->
+<h1 class="neon-text-bright">NARCO CARDS</h1>
 
-### Schritt 1: Bot erstellen
-1. Öffne Telegram und suche nach **@BotFather**
-2. Schreib die Nachricht: `/newbot`
-3. Folge den Anweisungen:
-   - **Bot-Name**: z.B. "Narco Cards"
-   - **Bot-Username**: z.B. "narco_cards_bot" (muss mit `_bot` enden)
-4. Du erhältst einen **Token** - speichern!
+<!-- Hologramm-Bild mit Puls-Animation -->
+<img src="assets/holo.svg" class="holo-img">
 
-### Schritt 2: Spiel registrieren
-1. Schreib @BotFather erneut: `/newgame`
-2. Wähle deinen Bot aus
-3. Gib ein:
-   - **Spielname**: "Narco Cards"
-   - **Beschreibung**: "Ein spannendes Kartenspiel"
-   - **Bild**: Optionales Game-Icon
-4. **Game Short Name**: `narco_cards`
-5. **Game URL**: 
-   ```
-   https://c15780277-eng.github.io/Card-Game-1/narco-cards-standalone.html
-   ```
+<!-- Button mit Neon-Effekt -->
+<button class="pill-btn">Spielen</button>
 
-### Schritt 3: In Telegram starten
-- Starte deinen Bot mit: `https://t.me/narco_cards_bot?game=narco_cards`
-- Oder suche nach deinem Bot-Username und tippe `/start`
+<!-- Linkes Menü-Item (aktiv) -->
+<button class="left-item active">PLAY</button>
 
----
+<!-- Leben-Leiste mit Glow -->
+<div class="life-bar"><div id="life-fill"></div></div>
+```
 
-## 💻 Technische Details
-
-- **Datei**: `narco-cards-standalone.html`
-- **Größe**: ~3.7 MB (alles in einer Datei enthalten)
-- **Hosting**: GitHub Pages (kostenlos)
-- **Art**: Standalone HTML/JavaScript/CSS
-
----
-
-## 🛠️ Für Entwickler
-
-Um die Datei lokal zu bearbeiten:
-1. Repository klonen
-2. `narco-cards-standalone.html` in einem Editor öffnen
-3. Änderungen vornehmen
-4. Committen und pushen
-
----
-
-## 📱 Mobile-freundlich?
-Das Spiel wird direkt in Telegram's eingebettetem Browser angezeigt und ist für Mobile optimiert.
-
----
-
-## 🚀 Nächste Schritte
-
-- [ ] Telegram Bot Token erhalten
-- [ ] Spiel in @BotFather registrieren
-- [ ] Spiel testen
-- [ ] Mit Freunden teilen!
-
----
-
-**Viel Spaß beim Spielen! 🎉**
+## Live-Test
+Branch: `feature/full-game`
+Test-Link: https://raw.githack.com/c15780277-eng/Card-Game-1/feature/full-game/index.html

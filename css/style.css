@@ -1,0 +1,10 @@
+/* battleboard visuals added and tuned to neon diagram style */
+.battle-diagram{position:absolute;inset:0;margin:auto;max-width:100%;width:90%;height:auto;opacity:0.18;pointer-events:none;filter:grayscale(10%) drop-shadow(0 8px 40px rgba(0,255,180,0.02));}
+.battle-wrap{position:relative;display:grid;grid-template-columns:1fr 360px 1fr;gap:16px;width:100%;max-width:1200px;padding:12px;z-index:2}
+.life-row{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:6px}
+.life-bar{width:260px;height:14px;background:rgba(255,255,255,0.04);border-radius:8px;border:1px solid rgba(143,245,201,0.06);overflow:hidden}
+.life-bar #life-fill{height:100%;background:linear-gradient(90deg,#7ef0c2,#8ff5c9);width:50%}
+/* ensure boards sit above background diagram */
+.board{display:flex;gap:8px;min-height:96px;align-items:flex-end;z-index:3}
+/* tweak other styles for stronger neon contrast on battle screen */
+.screen#screen-battle{background:radial-gradient(ellipse at center, rgba(0,15,10,0.35) 0%, rgba(0,0,0,0.95) 60%)}

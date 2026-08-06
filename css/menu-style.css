@@ -1,0 +1,48 @@
+/* Styling to match the neon menu design and the clean battleboard background */
+:root{--bg:#020504;--neon:#8ff5c9;--neon-2:#7ef0c2;--accent:#bffbd3;--muted:#9fb3ad}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#000405 0%, #03090a 60%);font-family:Segoe UI, Arial, sans-serif;color:var(--accent);}
+.menu-shell{min-height:100vh;display:flex;flex-direction:column}
+.hud{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid rgba(143,245,201,0.03)}
+.title{font-weight:900;letter-spacing:4px;color:var(--neon);font-size:20px}
+.title .subtitle{display:block;font-size:12px;color:var(--neon-2);letter-spacing:2px}
+
+/* top small pillbar fixed to top-left like screenshot */
+.menu-topbar-fixed{position:fixed;left:10px;top:8px;z-index:200}
+.menu-inline{display:flex;gap:8px}
+.menu-pill{background:rgba(200,200,200,0.06);border-radius:8px;padding:6px 10px;border:1px solid rgba(255,255,255,0.02);color:#dfeee5;font-weight:700;cursor:pointer;font-size:13px}
+.menu-pill.active{background:rgba(200,200,200,0.12);box-shadow:none;border-color:rgba(126,240,194,0.08)}
+
+.menu-content{display:flex;gap:12px;padding:80px 28px 80px}
+.menu-left-vertical{width:220px;display:flex;flex-direction:column;gap:18px}
+.menu-list{list-style:none;padding:0;margin:0}
+
+/* left stacked rounded pills like screenshot */
+.left-item{display:block;width:120px;text-align:left;padding:10px 12px;border-radius:8px;background:rgba(255,255,255,0.06);color:#fff;font-weight:700;letter-spacing:1px;cursor:pointer;border:1px solid rgba(0,0,0,0.35);margin:6px 0}
+.left-item.active{background:rgba(255,255,255,0.12);color:var(--neon);box-shadow:0 6px 20px rgba(0,0,0,0.5);}
+
+.daily-wrap{margin-top:12px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.daily-svg{width:68px;height:68px;filter:drop-shadow(0 0 8px rgba(143,245,201,0.2))}
+.daily-text{color:var(--neon-2);font-weight:700;letter-spacing:2px}
+
+.menu-center{flex:1;display:flex;align-items:flex-start;justify-content:center}
+.holo-card{width:520px;max-width:92%;padding:34px;border-radius:12px;background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.45));border:1px solid rgba(126,240,194,0.03);box-shadow:0 18px 60px rgba(0,0,0,0.6);display:flex;flex-direction:column;align-items:center;gap:10px}
+.holo-img{width:150px;filter:drop-shadow(0 0 40px rgba(126,240,194,0.12))}
+.holo-card h1{margin:8px 0 4px 0;font-size:28px;color:#bffbd3}
+.holo-card p{margin:0;color:rgba(200,255,230,0.6);text-align:center}
+.cta-row{display:flex;gap:12px;margin-top:12px}
+.pill-btn{padding:10px 18px;border-radius:999px;border:1px solid rgba(126,240,194,0.12);background:transparent;color:var(--neon-2);cursor:pointer}
+.pill-btn:hover{background:rgba(126,240,194,0.05)}
+
+/* battleboard visuals */
+.battle-diagram{position:absolute;inset:0;margin:auto;max-width:100%;width:90%;height:auto;opacity:0.2;pointer-events:none;filter:grayscale(10%) drop-shadow(0 8px 40px rgba(0,255,180,0.02));}
+.battle-wrap{position:relative;display:grid;grid-template-columns:1fr 360px 1fr;gap:16px;width:100%;max-width:1200px;padding:12px;z-index:2}
+.life-row{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:6px}
+.life-bar{width:260px;height:14px;background:rgba(255,255,255,0.04);border-radius:8px;border:1px solid rgba(143,245,201,0.06);overflow:hidden}
+.life-bar #life-fill{height:100%;background:linear-gradient(90deg,#7ef0c2,#8ff5c9);width:50%}
+.board{display:flex;gap:8px;min-height:96px;align-items:flex-end;z-index:3}
+.screen#screen-battle{background:radial-gradient(ellipse at center, rgba(0,15,10,0.35) 0%, rgba(0,0,0,0.95) 60%)}
+
+.card-tooltip{position:fixed;background:rgba(3,10,8,0.96);color:var(--neon);padding:10px;border-radius:6px;border:1px solid rgba(126,240,194,0.12);max-width:240px;z-index:1200;display:none}
+
+@media (max-width:700px){ .menu-left{display:none} .menu-topbar-fixed{left:8px;top:6px} .menu-content{padding:60px 12px} .holo-card{padding:18px} }

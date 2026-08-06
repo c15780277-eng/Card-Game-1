@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <circle cx="60" cy="60" r="54" fill="#05120f" stroke="#8ff5c9" stroke-width="4"/>
+  <g fill="#8ff5c9" font-family="Segoe UI, Arial" font-size="56" text-anchor="middle" dominant-baseline="central">
+    <text x="60" y="64">☺</text>
+  </g>
+  <rect x="12" y="88" width="96" height="10" rx="4" fill="#062018" opacity="0.6" />
+</svg>

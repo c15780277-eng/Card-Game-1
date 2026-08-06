@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <defs>
+    <filter id="glow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 H0 V40" fill="none" stroke="#08302b" stroke-width="0.8"/>
+    </pattern>
+  </defs>
+
+  <!-- Base dark grid -->
+  <rect width="100%" height="100%" fill="#051515"/>
+  <rect width="100%" height="100%" fill="url(#grid)" opacity="0.35"/>
+
+  <!-- faint alley vignette for depth (placeholder, will be blended with real artwork if provided) -->
+  <g opacity="0.08">
+    <rect x="0" y="0" width="1200" height="900" fill="black"/>
+  </g>
+
+  <!-- central battle phase circle -->
+  <g transform="translate(600,300)">
+    <circle r="160" fill="none" stroke="#0f6b58" stroke-width="6" opacity="0.9" filter="url(#glow)"/>
+    <circle r="120" fill="#072420" stroke="#7ef0c2" stroke-width="2" opacity="0.85"/>
+    <text y="6" text-anchor="middle" font-family="Segoe UI, Arial" font-size="44" fill="#bffbd3">BATTLE PHASE</text>
+  </g>
+
+  <!-- top row boxes (placeholders for zones) -->
+  <g transform="translate(220,90)" fill="none" stroke="#7ef0c2" stroke-width="3">
+    <rect x="0" y="0" width="110" height="160" rx="8"/>
+    <rect x="140" y="0" width="110" height="160" rx="8"/>
+    <rect x="280" y="0" width="110" height="160" rx="8"/>
+    <rect x="420" y="0" width="110" height="160" rx="8"/>
+    <rect x="560" y="0" width="110" height="160" rx="8"/>
+  </g>
+
+  <!-- bottom row boxes (player slots) -->
+  <g transform="translate(180,620)" fill="none" stroke="#7ef0c2" stroke-width="3">
+    <rect x="0" y="0" width="140" height="180" rx="10"/>
+    <rect x="170" y="0" width="140" height="180" rx="10"/>
+    <rect x="340" y="0" width="140" height="180" rx="10"/>
+    <rect x="510" y="0" width="140" height="180" rx="10"/>
+  </g>
+
+  <!-- life points bar top-center -->
+  <g transform="translate(340,230)">
+    <rect x="0" y="0" width="520" height="18" rx="8" fill="#06221b" stroke="#7ef0c2" stroke-width="2"/>
+  </g>
+
+  <!-- subtle center ornament -->
+  <g transform="translate(600,300)" opacity="0.6">
+    <circle r="8" fill="#8ff5c9"/>
+    <circle r="24" fill="none" stroke="#0f6b58" stroke-width="2"/>
+  </g>
+</svg>
