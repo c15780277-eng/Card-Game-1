@@ -1,0 +1,298 @@
+/* Narco Cards - Neon Glow & Effects Snippets */
+
+/* Reusable glow effect via filter */
+@keyframes neon-glow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 8px var(--glow-color)); opacity: 1; }
+  50% { filter: drop-shadow(0 0 16px var(--glow-color)); opacity: 0.95; }
+}
+
+@keyframes neon-glow-pulse-strong {
+  0%, 100% { filter: drop-shadow(0 0 12px var(--glow-color)) drop-shadow(0 0 24px var(--glow-color)); opacity: 1; }
+  50% { filter: drop-shadow(0 0 20px var(--glow-color)) drop-shadow(0 0 40px var(--glow-color)); opacity: 0.98; }
+}
+
+/* SVG/IMG glow effect class */
+.glow-teal {
+  filter: drop-shadow(0 0 var(--glow-blur) var(--glow-color));
+  animation: neon-glow-pulse 3s infinite;
+}
+
+.glow-teal-strong {
+  filter: drop-shadow(0 0 var(--glow-blur-strong) var(--glow-color))
+          drop-shadow(0 0 calc(var(--glow-blur-strong) * 1.5) rgba(126, 240, 194, 0.5));
+  animation: neon-glow-pulse-strong 2.5s infinite;
+}
+
+.glow-pink {
+  filter: drop-shadow(0 0 var(--glow-blur) var(--accent-pink));
+  animation: neon-glow-pulse 3s infinite;
+}
+
+/* Neon Text Effect */
+.neon-text {
+  color: var(--neon-primary);
+  font-weight: 900;
+  letter-spacing: var(--letter-spacing-wider);
+  text-shadow:
+    0 0 8px rgba(126, 240, 194, 0.5),
+    0 0 16px rgba(126, 240, 194, 0.3),
+    0 0 24px rgba(126, 240, 194, 0.2);
+}
+
+.neon-text-bright {
+  color: var(--neon-bright);
+  font-weight: 900;
+  letter-spacing: var(--letter-spacing-widest);
+  text-shadow:
+    0 0 10px rgba(191, 251, 211, 0.6),
+    0 0 20px rgba(126, 240, 194, 0.4),
+    0 0 30px rgba(126, 240, 194, 0.2);
+}
+
+/* Neon Border (thin outline with glow) */
+.neon-border {
+  border: 1px solid var(--neon-primary);
+  box-shadow: 0 0 8px rgba(126, 240, 194, 0.3) inset,
+              0 0 12px rgba(126, 240, 194, 0.2);
+}
+
+.neon-border-strong {
+  border: 2px solid var(--neon-secondary);
+  box-shadow: 0 0 12px rgba(143, 245, 201, 0.5) inset,
+              0 0 20px rgba(143, 245, 201, 0.3),
+              0 0 32px rgba(143, 245, 201, 0.15);
+}
+
+/* Grid Background Pattern */
+.grid-bg {
+  background-image:
+    linear-gradient(0deg, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 0 0;
+  opacity: var(--grid-opacity);
+}
+
+/* Vignette Effect (darkened edges) */
+.vignette {
+  position: relative;
+}
+
+.vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(2, 5, 4, 0.6) 100%);
+  pointer-events: none;
+}
+
+/* Button States (Neon Pills) */
+.pill-btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--button-border);
+  background: var(--button-bg);
+  color: var(--neon-primary);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.pill-btn:hover {
+  background: var(--button-bg-hover);
+  border-color: var(--button-border-active);
+  box-shadow: 0 0 12px rgba(126, 240, 194, 0.2);
+}
+
+.pill-btn:active, .pill-btn.active {
+  background: var(--button-bg-active);
+  border-color: var(--button-border-active);
+  box-shadow: 0 0 16px rgba(126, 240, 194, 0.3) inset,
+              0 0 20px rgba(126, 240, 194, 0.15);
+}
+
+/* Left Menu Item (vertical stacked button with accent indicator) */
+.left-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: var(--spacing-md) var(--spacing-md);
+  border-radius: var(--radius-md);
+  background: var(--button-bg);
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing-wide);
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-left: 4px solid transparent;
+  margin: var(--spacing-sm) 0;
+  transition: all var(--transition-fast);
+}
+
+.left-item:hover {
+  background: var(--button-bg-hover);
+  border-left-color: var(--neon-muted);
+}
+
+.left-item.active {
+  background: linear-gradient(90deg, rgba(126, 240, 194, 0.12), rgba(0, 0, 0, 0.1));
+  border-left-color: var(--neon-secondary);
+  color: var(--neon-bright);
+  box-shadow: 0 0 16px rgba(126, 240, 194, 0.15) inset,
+              0 0 8px rgba(126, 240, 194, 0.08);
+}
+
+/* Hologram Card (centered, multi-layer glow) */
+.holo-card {
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.45));
+  border: 1px solid rgba(126, 240, 194, 0.06);
+  box-shadow: var(--shadow-deep),
+              0 0 20px rgba(126, 240, 194, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.holo-img {
+  width: 140px;
+  filter: drop-shadow(0 0 var(--glow-blur-strong) var(--glow-color));
+  animation: neon-glow-pulse-strong 2.5s infinite;
+}
+
+.holo-card h1 {
+  margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+  font-size: var(--font-2xl);
+  color: var(--text-primary);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.holo-card p {
+  margin: 0;
+  color: rgba(200, 255, 230, 0.6);
+  text-align: center;
+}
+
+/* Battle Board Life Bar */
+.life-bar {
+  width: 260px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(143, 245, 201, 0.06);
+  overflow: hidden;
+  box-shadow: 0 0 8px rgba(126, 240, 194, 0.1) inset;
+}
+
+.life-bar #life-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--neon-primary), var(--neon-secondary));
+  box-shadow: 0 0 12px rgba(126, 240, 194, 0.4) inset;
+  animation: neon-glow-pulse 2s infinite;
+}
+
+/* Battle Unit Card on Board */
+.unit {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.2));
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(143, 245, 201, 0.08);
+  min-width: 90px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.unit:hover {
+  border-color: rgba(143, 245, 201, 0.2);
+  box-shadow: 0 6px 20px rgba(126, 240, 194, 0.12);
+  transform: translateY(-4px);
+}
+
+.unit.can-attack {
+  border-color: var(--neon-primary);
+  box-shadow: 0 0 12px rgba(126, 240, 194, 0.2);
+}
+
+.unit.selected {
+  outline: 2px solid var(--neon-secondary);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(126, 240, 194, 0.25);
+}
+
+/* Card Grid (collection, deckbuilder, shop) */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.tc-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.25));
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(143, 245, 201, 0.08);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tc-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-color: rgba(143, 245, 201, 0.15);
+}
+
+.tc-card .name {
+  font-weight: 700;
+  color: var(--neon-primary);
+}
+
+.tc-card .meta {
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+  margin-top: var(--spacing-sm);
+}
+
+/* Tooltip */
+.card-tooltip {
+  position: fixed;
+  background: rgba(3, 10, 8, 0.96);
+  color: var(--neon-primary);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(126, 240, 194, 0.2);
+  max-width: 240px;
+  z-index: 1200;
+  display: none;
+  box-shadow: 0 0 16px rgba(126, 240, 194, 0.15);
+}
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 36px;
+  transform: translateX(-50%);
+  background: rgba(10, 20, 16, 0.94);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--neon-primary);
+  color: var(--neon-primary);
+  display: none;
+  box-shadow: 0 0 20px rgba(126, 240, 194, 0.2);
+  font-weight: 700;
+}
+
+/* Accessibility: Focus States */
+button:focus-visible {
+  outline: 2px solid var(--neon-primary);
+  outline-offset: 2px;
+}
+
+input:focus-visible {
+  outline: 2px solid var(--neon-primary);
+  outline-offset: 2px;
+}

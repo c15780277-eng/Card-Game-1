@@ -1,0 +1,103 @@
+/* Narco Cards Neon Design System - Exakte CSS-Variablen basierend auf Referenzbildern */
+:root {
+  /* Primary Neon Colors */
+  --neon-primary: #7ef0c2;        /* Teal glow primary */
+  --neon-secondary: #8ff5c9;      /* Bright cyan accent */
+  --neon-bright: #bffbd3;         /* Very bright cyan for strong highlights */
+  --neon-muted: #5fd9b0;          /* Darker teal for less prominent elements */
+  
+  /* Secondary Accents (Pink/Purple for secondary UI, rare cards) */
+  --accent-pink: #ff8a8a;         /* Soft pink glow */
+  --accent-purple: #ff6ab0;       /* Purple accent for rare/special */
+  
+  /* Background Colors */
+  --bg-dark: #020504;             /* Darkest background (near black) */
+  --bg-base: #050810;             /* Base dark blue-tinted background */
+  --bg-light: #0a1518;            /* Slightly lighter for contrast layers */
+  --bg-card: #06221b;             /* Dark teal tint for card backgrounds */
+  
+  /* Text Colors */
+  --text-primary: #bffbd3;        /* Bright cyan for primary text/headings */
+  --text-secondary: #8ff5c9;      /* Secondary neon text */
+  --text-muted: #5fa89e;          /* Muted text for secondary info */
+  --text-inactive: #3a6f65;       /* Inactive/disabled text */
+  
+  /* UI Element Colors */
+  --button-bg: rgba(255, 255, 255, 0.04);     /* Very subtle semi-transparent */
+  --button-bg-hover: rgba(126, 240, 194, 0.08);     /* Neon tint on hover */
+  --button-bg-active: rgba(126, 240, 194, 0.16);    /* Strong neon on active */
+  --button-border: rgba(126, 240, 194, 0.12);       /* Neon border tint */
+  --button-border-active: rgba(126, 240, 194, 0.24);/* Strong border when active */
+  
+  /* Glow & Shadow Effects */
+  --glow-color: #7ef0c2;          /* Primary glow (teal) */
+  --glow-color-secondary: #ff8a8a;/* Secondary glow (pink) */
+  --shadow-light: 0 6px 20px rgba(0, 0, 0, 0.5);    /* Soft shadow */
+  --shadow-medium: 0 12px 40px rgba(0, 0, 0, 0.7);  /* Medium depth shadow */
+  --shadow-deep: 0 20px 60px rgba(0, 0, 0, 0.9);    /* Deep shadow */
+  
+  /* Glow Filter Values */
+  --glow-blur: 12px;              /* Standard glow blur radius */
+  --glow-blur-strong: 20px;       /* Strong glow (titles, holo) */
+  --glow-opacity: 0.3;            /* Glow layer opacity */
+  
+  /* Grid & Pattern */
+  --grid-color: #08302b;          /* Grid line color (dark teal) */
+  --grid-opacity: 0.35;           /* Grid pattern opacity over background */
+  
+  /* Transitions & Animations */
+  --transition-fast: 0.12s ease;  /* Fast feedback (hover, click) */
+  --transition-normal: 0.24s ease;/* Standard transition */
+  --transition-slow: 0.36s ease;  /* Smooth fade (screen transitions) */
+  
+  /* Spacing & Layout */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 999px;
+  
+  /* Font Stack */
+  --font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  --font-mono: "Courier New", monospace;
+  
+  /* Font Sizes (mobile-first, scale up for desktop) */
+  --font-xs: 12px;
+  --font-sm: 13px;
+  --font-base: 14px;
+  --font-md: 16px;
+  --font-lg: 18px;
+  --font-xl: 24px;
+  --font-2xl: 28px;
+  --font-3xl: 32px;
+  --font-4xl: 48px;
+  
+  /* Letter Spacing (for neon, cyberpunk aesthetic) */
+  --letter-spacing-tight: 0px;
+  --letter-spacing-normal: 1px;
+  --letter-spacing-wide: 2px;
+  --letter-spacing-wider: 4px;
+  --letter-spacing-widest: 6px;
+}
+
+/* Dark mode (future: can add light mode variants) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Already dark-optimized by default */
+  }
+}
+
+/* High DPI / Retina displays: slightly stronger glow for visibility */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  :root {
+    --glow-blur: 14px;
+    --glow-blur-strong: 24px;
+  }
+}

@@ -4,13 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Narco Cards: The Gathering — Prototype</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/neon-effects.css">
   <link rel="stylesheet" href="css/menu-style.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div id="app" class="app">
     <header class="hud">
-      <div class="title">NARCO CARDS: <span class="subtitle">THE GATHERING</span></div>
+      <div class="title neon-text">NARCO CARDS: <span class="subtitle">THE GATHERING</span></div>
       <div class="hud-actions">
         <button id="btn-reset" class="pill-btn">Zurücksetzen</button>
       </div>
@@ -41,7 +43,7 @@
             <li><button id="menu-quit" class="left-item">QUIT</button></li>
           </ul>
           <div class="daily-wrap">
-            <img src="assets/daily.svg" alt="Daily" class="daily-svg">
+            <img src="assets/daily.svg" alt="Daily" class="daily-svg glow-teal">
             <div class="daily-text" id="daily-login">DAILY LOGIN</div>
           </div>
         </div>
@@ -82,8 +84,8 @@
 
           <div class="log-and-controls">
             <div class="life-row">
-              <div class="life-label">LIFE POINTS</div>
-              <div class="life-bar"><div id="life-fill" style="width:100%"></div></div>
+              <div class="life-label neon-text">LIFE POINTS</div>
+              <div class="life-bar"><div id="life-fill"></div></div>
             </div>
             <div class="log" id="game-log"></div>
             <div class="battle-controls">
