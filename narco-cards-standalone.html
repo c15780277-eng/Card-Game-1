@@ -37,14 +37,15 @@
   /* Make images/slices responsive where appropriate */
   img.slice, img { max-width: 100%; height: auto; display: block; }
 
-  /* Ensure stage-wrap stays within viewport (works alongside existing scale rules) */
+  /* Ensure stage-wrap stays within viewport (works alongside JS scale rules) */
   .stage-wrap {
-    max-width: 100vw;
-    max-height: 100vh;
     box-sizing: border-box;
+    margin: 0 auto;
+    /* width/height will be set by JS to match scaled stage */
   }
 
-  /* If a canvas with id 'gameCanvas' exists, allow it to scale fluidly */
+  /* If a canvas with id 'gameCanvas' exists, allow it to scale fluidly
+     Backing store size is handled by JS for DPR */
   canvas#gameCanvas, canvas, .game-viewport, iframe {
     max-width: 100%;
     width: 100%;
@@ -78,39 +79,77 @@
 
 <script>
 (function(){
-  // Resize helper for a <canvas id="gameCanvas"> if present.
-  function resizeGameCanvas() {
-    var canvas = document.getElementById('gameCanvas');
-    if (!canvas) return;
-    var DPR = window.devicePixelRatio || 1;
+  // DPR-friendly resize helper for the 1024x1024 stage and any canvases inside it.
+  function resizeStageAndCanvases() {
+    var wrap = document.querySelector('.stage-wrap');
+    var stage = document.querySelector('.stage');
+    if (!stage || !wrap) return;
 
-    // Use available viewport size
-    var maxWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-    var maxHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+    var vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    var vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
-    // Set device pixel perfect backing store
-    canvas.width = Math.floor(maxWidth * DPR);
-    canvas.height = Math.floor(maxHeight * DPR);
+    // scale so the 1024x1024 stage fits entirely in the viewport (letterbox)
+    var scale = Math.min(vw / 1024, vh / 1024) || 1;
+    // optional clamps to avoid extreme upscales or tiny UI
+    scale = Math.min(scale, 1.4);
+    scale = Math.max(scale, 0.28);
 
-    // Set CSS size the user sees
-    canvas.style.width = maxWidth + 'px';
-    canvas.style.height = maxHeight + 'px';
+    // apply scale to the stage and size the wrapper so it's centered
+    stage.style.transform = 'scale(' + scale + ')';
+    stage.style.transformOrigin = 'top left';
 
-    var ctx = canvas.getContext && canvas.getContext('2d');
-    if (ctx && typeof ctx.setTransform === 'function') {
-      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    }
+    var visiblePx = Math.round(1024 * scale);
+    wrap.style.width = visiblePx + 'px';
+    wrap.style.height = visiblePx + 'px';
 
-    // Call game-specific resize handler if available
+    // Ensure active screens are visible (some code may rely on CSS opacity/pointer-events)
+    document.querySelectorAll('.screen').forEach(function(s){
+      if (s.classList.contains('active')) {
+        s.style.opacity = '1';
+        s.style.pointerEvents = 'auto';
+      }
+    });
+
+    // DevicePixelRatio friendly canvas backing store
+    var dpr = window.devicePixelRatio || 1;
+    var canvases = stage.querySelectorAll('canvas');
+    canvases.forEach(function(canvas){
+      // compute the CSS size we want the canvas to appear at
+      var cssWidth = canvas.clientWidth || canvas.offsetWidth || visiblePx;
+      var cssHeight = canvas.clientHeight || canvas.offsetHeight || visiblePx;
+      // set backing store to css * dpr
+      var wantW = Math.max(1, Math.round(cssWidth * dpr));
+      var wantH = Math.max(1, Math.round(cssHeight * dpr));
+      if (canvas.width !== wantW || canvas.height !== wantH) {
+        canvas.width = wantW;
+        canvas.height = wantH;
+      }
+      // set the CSS size to the logical CSS pixels (so game drawing code coordinates remain compatible)
+      canvas.style.width = cssWidth + 'px';
+      canvas.style.height = cssHeight + 'px';
+      var ctx = canvas.getContext && canvas.getContext('2d');
+      if (ctx && typeof ctx.setTransform === 'function') {
+        // reset and scale drawing operations to DPR
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+    });
+
+    // make sure no accidental overflow:hidden hides content
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+
+    // call game-specific resize handler if available
     if (window.game && typeof window.game.onResize === 'function') {
-      try { window.game.onResize(maxWidth, maxHeight, DPR); } catch(e) { console.warn('game.onResize error', e); }
+      try { window.game.onResize( Math.round(1024 * scale), Math.round(1024 * scale), window.devicePixelRatio || 1 ); } catch(e) { console.warn('game.onResize error', e); }
     }
   }
 
-  var debounce;
-  window.addEventListener('load', function(){ resizeGameCanvas(); setTimeout(resizeGameCanvas, 300); });
-  window.addEventListener('resize', function(){ clearTimeout(debounce); debounce = setTimeout(resizeGameCanvas, 80); });
-  window.addEventListener('orientationchange', function(){ setTimeout(resizeGameCanvas, 200); });
+  var tid;
+  window.addEventListener('resize', function(){ clearTimeout(tid); tid = setTimeout(resizeStageAndCanvases, 80); });
+  window.addEventListener('orientationchange', function(){ setTimeout(resizeStageAndCanvases, 120); });
+  window.addEventListener('load', function(){ resizeStageAndCanvases(); setTimeout(resizeStageAndCanvases, 200); });
+  // run immediately in case script is injected after load
+  resizeStageAndCanvases();
 })();
 </script>
 
@@ -133,16 +172,17 @@
     display:flex; align-items:center; justify-content:center;
   }
 
-  /* Scales the fixed 1024x1024 stage to fit the viewport, keeping it crisp */
+  /* Stage: use a fixed internal resolution (1024x1024). JS will scale it to fit the viewport. */
   .stage-wrap{
-    width:100vmin; height:100vmin;
+    width:1024px; height:1024px;
     position:relative;
+    box-sizing:border-box;
   }
   .stage{
     position:absolute; top:0; left:0;
     width:1024px; height:1024px;
     transform-origin: top left;
-    transform: scale(calc(100vmin / 1024));
+    transform: none; /* JS will set scale */
   }
 
   .screen{
@@ -420,5 +460,5 @@
 
     <!-- ============ SCREEN 1: MAIN MENU ============ -->
     <section class="screen active" id="screen-menu" aria-label="Hauptmenü">
-      <img class="slice" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAFYCAIAAABCmhnpAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAHIeBJREFUeJxkvYGSJamuZCuRbfbM5v8/dxK9CtyXQ57pe/t0Veb[...]" />
-      <!-- content truncated in commit for brevity but preserved in file on GitHub -->
+      <img class="slice" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAFYCAIAAABCmhnpAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAHIeBJREFUeJxkvYGSJamuZCuRbfbM5v8/dxK9CtyXQ57pe/t0Veb[...]" alt="menu">
+      <!-- content truncated in the GitHub view for brevity; original assets remain unchanged -->
