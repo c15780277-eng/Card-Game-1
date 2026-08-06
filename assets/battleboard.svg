@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1"><stop offset="0%" stop-color="#6ff0c3"/><stop offset="100%" stop-color="#8ff5c9"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 H0 V40" fill="none" stroke="#08302b" stroke-width="0.8"/>
+    </pattern>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#051515"/>
+  <rect width="100%" height="100%" fill="url(#grid)" opacity="0.35"/>
+
+  <!-- central battle phase circle -->
+  <g transform="translate(600,300)">
+    <circle r="160" fill="none" stroke="#0f6b58" stroke-width="6" opacity="0.9" filter="url(#glow)"/>
+    <circle r="120" fill="#0b2a23" stroke="#7ef0c2" stroke-width="2" opacity="0.85"/>
+    <text y="6" text-anchor="middle" font-family="Segoe UI, Arial" font-size="48" fill="#ff8a8a">BATTLE PHASE</text>
+  </g>
+
+  <!-- arrows and phase boxes -->
+  <g fill="none" stroke="#7ef0c2" stroke-width="3" opacity="0.95">
+    <!-- left arrow -->
+    <path d="M200 260 L360 260" stroke-linecap="round"/>
+    <path d="M200 340 L360 340" stroke-linecap="round"/>
+    <!-- right arrow -->
+    <path d="M1040 260 L840 260" stroke-linecap="round"/>
+    <path d="M1040 340 L840 340" stroke-linecap="round"/>
+  </g>
+
+  <!-- top row boxes (draw phase etc) -->
+  <g transform="translate(200,80)" fill="none" stroke="#7ef0c2" stroke-width="3">
+    <rect x="0" y="0" width="120" height="160" rx="8"/>
+    <rect x="140" y="0" width="120" height="160" rx="8"/>
+    <rect x="280" y="0" width="120" height="160" rx="8"/>
+    <rect x="420" y="0" width="120" height="160" rx="8"/>
+  </g>
+
+  <!-- bottom row boxes -->
+  <g transform="translate(160,580)" fill="none" stroke="#7ef0c2" stroke-width="3">
+    <rect x="0" y="0" width="120" height="160" rx="8"/>
+    <rect x="140" y="0" width="120" height="160" rx="8"/>
+    <rect x="280" y="0" width="120" height="160" rx="8"/>
+    <rect x="420" y="0" width="120" height="160" rx="8"/>
+  </g>
+
+  <!-- life points bar top-center -->
+  <g transform="translate(360,220)">
+    <rect x="0" y="0" width="480" height="18" rx="8" fill="#02221d" stroke="#7ef0c2" stroke-width="2"/>
+  </g>
+
+  <!-- small labels (neon text) -->
+  <g font-family="Segoe UI, Arial" font-size="18" fill="#7ef0c2">
+    <text x="110" y="60">START PHASE</text>
+    <text x="1050" y="60" text-anchor="end">DRAW PHASE</text>
+  </g>
+
+  <!-- subtle center ornament -->
+  <g transform="translate(600,300)" opacity="0.6">
+    <circle r="8" fill="#8ff5c9"/>
+    <circle r="24" fill="none" stroke="#0f6b58" stroke-width="2"/>
+  </g>
+</svg>
