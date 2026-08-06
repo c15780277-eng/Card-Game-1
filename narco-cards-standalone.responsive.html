@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Narco Cards — Responsive Wrapper</title>
+  <style>
+    html,body{height:100%;margin:0;background:#05070a;color:#e8fff2;font-family: 'Segoe UI', Arial, sans-serif;}
+    .viewport{width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    /* The inner stage (iframe) is 1024x1024 and will be scaled to fit */
+    #frame-wrap{width:1024px;height:1024px;will-change:transform;transform-origin:top left;}
+    iframe#gameFrame{width:1024px;height:1024px;border:0;display:block;background:transparent}
+    /* Small helper to ensure pointer events pass through scaled iframe correctly */
+    .center{display:flex;align-items:center;justify-content:center}
+    @media (max-width:420px){
+      /* make sure touch targets remain usable */
+      iframe#gameFrame{touch-action:auto}
+    }
+  </style>
+</head>
+<body>
+  <div class="viewport">
+    <div id="frame-wrap" class="center">
+      <iframe id="gameFrame" src="narco-cards-standalone.html" title="Narco Cards game"></iframe>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var wrap = document.getElementById('frame-wrap');
+      var frame = document.getElementById('gameFrame');
+      function fit(){
+        var vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        var vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        var scale = Math.min(vw / 1024, vh / 1024) || 1;
+        // clamp to not upscale too much
+        scale = Math.min(scale, 1.4);
+        wrap.style.transform = 'scale(' + scale + ')';
+        // set wrapper visible size so it occupies correct layout and centers
+        wrap.style.width = Math.round(1024 * scale) + 'px';
+        wrap.style.height = Math.round(1024 * scale) + 'px';
+      }
+      var tid;
+      window.addEventListener('resize', function(){ clearTimeout(tid); tid = setTimeout(fit, 80); });
+      window.addEventListener('orientationchange', function(){ setTimeout(fit, 120); });
+      window.addEventListener('load', function(){ fit(); setTimeout(fit, 200); });
+      // also run immediately
+      fit();
+    })();
+  </script>
+</body>
+</html>
