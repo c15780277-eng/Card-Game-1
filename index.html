@@ -1,22 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Game</title>
-    <!-- Meta refresh as a robust redirect (uses absolute path for GitHub Pages) -->
-    <meta http-equiv="refresh" content="0; URL='https://c15780277-eng.github.io/Card-Game-1/narco-cards-standalone.html'">
-    <script>
-        // JavaScript redirect as primary method
-        window.location.replace('https://c15780277-eng.github.io/Card-Game-1/narco-cards-standalone.html');
-    </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Narco Cards: The Gathering — Prototype</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <p>Weiterleitung zum Spiel... Wenn die Weiterleitung nicht funktioniert, klicke bitte auf den Link:</p>
-    <p><a href="https://c15780277-eng.github.io/Card-Game-1/narco-cards-standalone.html">Spiel öffnen</a></p>
-    <noscript>
-        <p>JavaScript ist deaktiviert. Bitte klicke auf diesen Link, um das Spiel zu öffnen:</p>
-        <p><a href="https://c15780277-eng.github.io/Card-Game-1/narco-cards-standalone.html">Spiel öffnen</a></p>
-    </noscript>
+  <div id="app" class="app">
+    <header class="hud">
+      <div class="title">Narco Cards: The Gathering</div>
+      <div class="hud-actions">
+        <button id="btn-play" class="pill-btn">Spielen</button>
+        <button id="btn-deck" class="pill-btn">Deckbuilder</button>
+        <button id="btn-shop" class="pill-btn">Shop</button>
+        <button id="btn-collection" class="pill-btn">Sammlung</button>
+        <button id="btn-reset" class="pill-btn">Zurücksetzen</button>
+      </div>
+    </header>
+
+    <main class="stage">
+      <!-- Main Menu / Intro -->
+      <section id="screen-menu" class="screen active">
+        <div class="menu-card">
+          <h2>Willkommen</h2>
+          <p>Ein einfaches Kartenspiel-Prototyp. Baue ein Deck, kaufe Karten im Shop und trete gegen eine KI an.</p>
+          <div class="menu-actions">
+            <button id="menu-play" class="pill-btn primary">Spielen</button>
+            <button id="menu-deck" class="pill-btn">Deckbuilder</button>
+            <button id="menu-shop" class="pill-btn">Shop</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Battle Screen -->
+      <section id="screen-battle" class="screen">
+        <div class="battle-wrap">
+          <div class="player-area">
+            <div class="player-stats">
+              <div><strong id="player-name">Spieler</strong></div>
+              <div>LP: <span id="player-hp">30</span></div>
+              <div>Mana: <span id="player-mana">0</span>/<span id="player-maxmana">0</span></div>
+              <div>Credits: <span id="player-credits">0</span></div>
+            </div>
+            <div class="hand" id="player-hand"></div>
+            <div class="battle-controls">
+              <button id="btn-endturn" class="pill-btn">Beenden</button>
+              <button id="btn-surrender" class="pill-btn">Aufgeben</button>
+            </div>
+          </div>
+
+          <div class="opponent-area">
+            <div class="opponent-stats">
+              <div><strong>Gegner (KI)</strong></div>
+              <div>LP: <span id="ai-hp">30</span></div>
+              <div>Mana: <span id="ai-mana">0</span>/<span id="ai-maxmana">0</span></div>
+            </div>
+            <div class="ai-hand" id="ai-hand"></div>
+          </div>
+
+          <div class="log" id="game-log"></div>
+        </div>
+      </section>
+
+      <!-- Deckbuilder / Collection / Shop overlays -->
+      <aside id="overlay" class="overlay">
+        <div class="overlay-header">
+          <h2 id="overlay-title">Overlay</h2>
+          <div>
+            <button id="overlay-close" class="pill-btn">Schließen</button>
+          </div>
+        </div>
+        <div class="overlay-body" id="overlay-body"></div>
+      </aside>
+
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </div>
+
+  <script src="js/game.js"></script>
 </body>
 </html>
