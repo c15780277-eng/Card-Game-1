@@ -16,6 +16,18 @@
       </div>
     </header>
 
+    <!-- top small pillbar to match mobile screenshot -->
+    <div class="menu-topbar-fixed">
+      <nav class="menu-inline">
+        <button class="menu-pill active" data-target="play">PLAY</button>
+        <button class="menu-pill" data-target="deck">DECKBUILDER</button>
+        <button class="menu-pill" data-target="collection">COLLECTION</button>
+        <button class="menu-pill" data-target="shop">SHOP</button>
+        <button class="menu-pill" data-target="options">OPTIONS</button>
+        <button class="menu-pill" data-target="quit">QUIT</button>
+      </nav>
+    </div>
+
     <main class="stage">
       <!-- Main Menu / Intro with left vertical menu to match design -->
       <section id="screen-menu" class="screen active menu-screen">
@@ -54,7 +66,7 @@
 
       <!-- Battle Screen -->
       <section id="screen-battle" class="screen">
-        <!-- battleboard diagram as background layer -->
+        <!-- clean battleboard diagram as background layer (no arrows/labels) -->
         <img src="assets/battleboard.svg" alt="Battle Diagram" class="battle-diagram" aria-hidden="true">
 
         <div class="battle-wrap">
