@@ -1,17 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <defs>
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-      <feMerge>
-        <feMergeNode in="coloredBlur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
-  </defs>
-  <g filter="url(#glow)">
-    <circle cx="32" cy="32" r="28" fill="rgba(97,255,182,0.05)" stroke="#61ffb6" stroke-width="1.5"/>
-    <path d="M20 30c1 5 4 8 12 8s11-3 12-8" stroke="#61ffb6" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-    <rect x="22" y="18" width="4" height="4" rx="1" fill="#61ffb6"/>
-    <rect x="38" y="18" width="4" height="4" rx="1" fill="#61ffb6"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <circle cx="60" cy="60" r="54" fill="#05120f" stroke="#8ff5c9" stroke-width="4"/>
+  <g fill="#8ff5c9" font-family="Segoe UI, Arial" font-size="56" text-anchor="middle" dominant-baseline="central">
+    <text x="60" y="64">☺</text>
   </g>
+  <rect x="12" y="88" width="96" height="10" rx="4" fill="#062018" opacity="0.6" />
 </svg>

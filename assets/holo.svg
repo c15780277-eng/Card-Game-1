@@ -1,29 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 140" preserveAspectRatio="xMidYMid meet">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
   <defs>
-    <radialGradient id="g" cx="50%" cy="30%" r="60%">
-      <stop offset="0%" stop-color="#61ffb6" stop-opacity="0.55"/>
-      <stop offset="60%" stop-color="#61ffb6" stop-opacity="0.12"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    <radialGradient id="g" cx="50%" cy="45%">
+      <stop offset="0%" stop-color="#9ef0c7" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#0d241f" stop-opacity="0.0"/>
     </radialGradient>
   </defs>
-  <rect width="100%" height="100%" fill="url(#g)" />
-  <g transform="translate(110,70)">
-    <g stroke="#61ffb6" stroke-width="2" fill="none" opacity="0.95">
-      <circle r="40" stroke-opacity="0.7" />
-      <circle r="28" stroke-opacity="0.5" />
-      <path d="M -40 0 L -80 0" stroke-opacity="0.08" />
-      <!-- radial rays -->
-      <g stroke-opacity="0.6">
-        <line x1="0" y1="-45" x2="0" y2="-60" />
-        <line x1="32" y1="-32" x2="44" y2="-44" />
-        <line x1="45" y1="0" x2="60" y2="0" />
-        <line x1="32" y1="32" x2="44" y2="44" />
-        <line x1="0" y1="45" x2="0" y2="60" />
-        <line x1="-32" y1="32" x2="-44" y2="44" />
-      </g>
+  <rect width="100%" height="100%" fill="url(#g)"/>
+  <g transform="translate(200,200)">
+    <circle r="80" fill="none" stroke="#8ff5c9" stroke-width="6" opacity="0.85" />
+    <circle r="56" fill="#06201a" stroke="#7ef0c2" stroke-width="3" opacity="0.9"/>
+    <g fill="#7ef0c2" opacity="0.95">
+      <rect x="-6" y="-120" width="12" height="24" rx="3"/>
+      <rect x="-80" y="-6" width="24" height="12" rx="3" transform="rotate(-45)"/>
+      <rect x="56" y="-6" width="24" height="12" rx="3" transform="rotate(45)"/>
+      <rect x="-6" y="96" width="12" height="24" rx="3"/>
     </g>
-    <g fill="#000" opacity="0.55">
-      <circle r="12" />
-    </g>
+    <circle r="18" fill="#0a1a16" stroke="#8ff5c9" stroke-width="3"/>
   </g>
 </svg>
