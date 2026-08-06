@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 140" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <radialGradient id="g" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#61ffb6" stop-opacity="0.55"/>
+      <stop offset="60%" stop-color="#61ffb6" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g)" />
+  <g transform="translate(110,70)">
+    <g stroke="#61ffb6" stroke-width="2" fill="none" opacity="0.95">
+      <circle r="40" stroke-opacity="0.7" />
+      <circle r="28" stroke-opacity="0.5" />
+      <path d="M -40 0 L -80 0" stroke-opacity="0.08" />
+      <!-- radial rays -->
+      <g stroke-opacity="0.6">
+        <line x1="0" y1="-45" x2="0" y2="-60" />
+        <line x1="32" y1="-32" x2="44" y2="-44" />
+        <line x1="45" y1="0" x2="60" y2="0" />
+        <line x1="32" y1="32" x2="44" y2="44" />
+        <line x1="0" y1="45" x2="0" y2="60" />
+        <line x1="-32" y1="32" x2="-44" y2="44" />
+      </g>
+    </g>
+    <g fill="#000" opacity="0.55">
+      <circle r="12" />
+    </g>
+  </g>
+</svg>

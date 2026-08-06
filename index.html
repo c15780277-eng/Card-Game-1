@@ -4,41 +4,56 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Narco Cards: The Gathering — Prototype</title>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="neon-bg">
   <div id="app" class="app">
-    <header class="hud">
-      <div class="title">Narco Cards: The Gathering</div>
-      <div class="hud-actions">
-        <button id="btn-play" class="pill-btn">Spielen</button>
-        <button id="btn-deck" class="pill-btn">Deckbuilder</button>
-        <button id="btn-shop" class="pill-btn">Shop</button>
-        <button id="btn-collection" class="pill-btn">Sammlung</button>
-        <button id="btn-reset" class="pill-btn">Zurücksetzen</button>
+    <aside class="main-menu">
+      <div class="menu-top">
+        <div class="logo">NARCO CARDS:<span class="sub"> THE GATHERING</span></div>
       </div>
-    </header>
+      <nav class="menu-list">
+        <button id="menu-play" class="menu-item">PLAY</button>
+        <button id="menu-deck" class="menu-item">DECKBUILDER</button>
+        <button id="btn-collection" class="menu-item">COLLECTION</button>
+        <button id="btn-shop" class="menu-item">SHOP</button>
+        <button id="btn-options" class="menu-item">OPTIONS</button>
+        <button id="btn-quit" class="menu-item">QUIT</button>
+      </nav>
+      <div class="menu-footer">
+        <div class="daily">
+          <img src="assets/daily.svg" alt="daily" class="daily-icon">
+          <div class="daily-text">DAILY LOGIN</div>
+        </div>
+      </div>
+    </aside>
 
     <main class="stage">
-      <!-- Main Menu / Intro -->
-      <section id="screen-menu" class="screen active">
-        <div class="menu-card">
+      <!-- Background container (artwork implied) -->
+      <div class="stage-art"></div>
+
+      <!-- Main Menu Screen (centered but dim, user triggered by left menu) -->
+      <section id="screen-menu" class="screen active neon-screen">
+        <div class="menu-card neon-card">
+          <div class="holo-pedestal">
+            <img src="assets/holo.svg" alt="holo" class="holo-svg">
+          </div>
           <h2>Willkommen</h2>
-          <p>Ein Kartenspiel-Prototyp. Baue ein Deck, kaufe Karten im Shop und trete gegen eine KI an.</p>
+          <p>Ein Kartenspiel-Prototyp im neon-stil. Wähle links deine Aktion.</p>
           <div class="menu-actions">
-            <button id="menu-play" class="pill-btn primary">Spielen</button>
-            <button id="menu-deck" class="pill-btn">Deckbuilder</button>
-            <button id="menu-shop" class="pill-btn">Shop</button>
+            <button id="btn-play" class="pill-btn primary">Spielen</button>
+            <button id="btn-deck2" class="pill-btn">Deckbuilder</button>
           </div>
         </div>
       </section>
 
       <!-- Battle Screen -->
       <section id="screen-battle" class="screen">
-        <div class="battle-wrap">
+        <div class="battle-wrap neon-panel">
           <div class="opponent-area">
             <div class="opponent-stats">
-              <div><strong>Gegner (KI)</strong></div>
+              <div class="title-small">Gegner (KI)</div>
               <div>LP: <span id="ai-hp">30</span></div>
               <div>Mana: <span id="ai-mana">0</span>/<span id="ai-maxmana">0</span></div>
             </div>
@@ -47,7 +62,7 @@
           </div>
 
           <div class="log-and-controls">
-            <div class="log" id="game-log"></div>
+            <div class="log neon-log" id="game-log"></div>
             <div class="battle-controls">
               <button id="btn-endturn" class="pill-btn">Beenden</button>
               <button id="btn-surrender" class="pill-btn">Aufgeben</button>
@@ -56,19 +71,19 @@
 
           <div class="player-area">
             <div class="player-stats">
-              <div><strong id="player-name">Spieler</strong></div>
+              <div class="title-small"><strong id="player-name">Spieler</strong></div>
               <div>LP: <span id="player-hp">30</span></div>
               <div>Mana: <span id="player-mana">0</span>/<span id="player-maxmana">0</span></div>
               <div>Credits: <span id="player-credits">0</span></div>
             </div>
-            <div class="board" id="player-board"></div>
+            <div class="board neon-board" id="player-board"></div>
             <div class="hand" id="player-hand"></div>
           </div>
         </div>
       </section>
 
-      <!-- Deckbuilder / Collection / Shop overlays -->
-      <aside id="overlay" class="overlay">
+      <!-- Overlay -->
+      <aside id="overlay" class="overlay neon-overlay">
         <div class="overlay-header">
           <h2 id="overlay-title">Overlay</h2>
           <div>
